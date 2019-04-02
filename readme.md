@@ -11,6 +11,15 @@
 ### Description
 
 This project is a simple bootstrap Node.js app for backend. It's analogy for my [frontend](https://github.com/dgaydukov/react-quickstart) app.
+Technically whenever you need to start new project, you can start from scratch. Just run `npm init` in empty folder and go on. But on average it can take up to a week to set everything you need
+* app entry point
+* directory structure
+* dockerfile
+* ORM/database
+* migrations
+* tests
+* and so on...
+So, to save your time, here is a simple bootstrap project, that will help you to start develop your project immediately, without setting up everything from scratch.
 
 
 ### Installation
@@ -55,7 +64,7 @@ In case you want to stop dockerized version, just type `docker-compose down`. Th
 
 
 ### Running tests
-To run tests, type in consoel `npm test`. This will run all tests under ./test folder. If you want to run specific file, try `npm run test:main`. Change filename in `package.json`.
+To run tests, type in console `npm test`. This will run all tests under `./test` folder. If you want to run specific file, try `npm run test:main`. Change filename in `package.json`.
 
 
 ### Authors
