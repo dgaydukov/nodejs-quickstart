@@ -3,6 +3,7 @@
 ## Content
 * [Description](#description)
 * [Installation](#installation)
+* [Running migrations](#running-migrations)
 * [Built With](#built-with)
 * [Project Structure](#project-structure)
 * [Running tests](#running-tests)
@@ -49,6 +50,25 @@ docker-compose up -d --build
 ```
 
 In case you want to stop dockerized version, just type `docker-compose down`. This will kill docker container and stop app.
+
+### Running migrations
+
+By default migrations are run in code. Check this line `await connection.runMigrations();` in `index.ts` file. It's done so, in productions, we don't need to execute any commands from console.
+But you can also use console commads:
+
+```shell
+# create new migration
+npm run migrage:new my_new_migration
+
+# execute all available migrations
+npm run migrate:up
+
+# rollback only 1 migration
+npm run migrate:down
+```
+
+If you want to rollaback 5 migrations, then just type 5 times rollaback command `npm run migrate:down`.
+
 
 
 ### Built With
