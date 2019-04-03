@@ -74,6 +74,6 @@ app.use(router.routes());
 
 databaseConnection.then(async (connection) => {
     await connection.runMigrations()
-    await app.listen(3000);
+    await app.listen(process.env.APP_PORT);
     console.log('nodejs-quickstart is running...');
 }).catch(console.log);
