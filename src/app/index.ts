@@ -34,7 +34,7 @@ app.use(async (ctx: Koa.Context, next: () => Promise<any>) => {
 });
 
 router.get('/', async (ctx: Koa.Context) => {
-    ctx.body = 'STO Platform for Issuer v1';
+    ctx.body = 'Node.js Quickstart v1';
 });
 
 
@@ -75,5 +75,5 @@ app.use(router.routes());
 databaseConnection.then(async (connection) => {
     await connection.runMigrations()
     await app.listen(3000);
-    console.log('sto-issuer is running...');
+    console.log('nodejs-quickstart is running...');
 }).catch(console.log);

@@ -1,7 +1,6 @@
 import { getRepository, Repository } from 'typeorm';
 import User from '../../entity/user';
 import Session from '../../entity/session';
-import whitelist from '../../entity/whitelist';
 import {dblSha, validateEmail} from '../helpers';
 import uuidv4 = require('uuid/v4');
 import rp = require('request-promise');
@@ -12,12 +11,10 @@ export default class UserRepo {
 
     private repo: Repository<User>;
     private sessionRepo: Repository<Session>;
-    private whitelistRepo: Repository<whitelist>;
 
     constructor(){
         this.repo = getRepository(User);
         this.sessionRepo = getRepository(Session);
-        this.whitelistRepo = getRepository(whitelist);
     }
     
     async signIn(username: string, password: string): Promise<IAuth>{

@@ -1,5 +1,5 @@
 /**
- * Complete test of running application
+ * Complete test of app API
  */
 
 import {assert} from 'chai';
@@ -12,8 +12,8 @@ describe('API integration testing', ()=>{
 
     describe('Auth test', ()=>{
         const baseUrl = API_URL + 'auth/';
-        const username = `testuser-${Math.random()*10**6}@gmail.com`;
-        const password = 'testpassword';
+        const username = `user-${Math.random()*10**6}@gmail.com`;
+        const password = 'password';
 
         it('should signup new user', async()=>{
             const body = {
