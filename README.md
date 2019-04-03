@@ -7,6 +7,7 @@
 * [Built With](#built-with)
 * [Project Structure](#project-structure)
 * [Running tests](#running-tests)
+* [Simple Auth](#simple-auth)
 * [Authors](#authors)
 
 ### Description
@@ -84,8 +85,17 @@ If you want to rollaback 5 migrations, then just type 5 times rollaback command 
 
 
 ### Running tests
+
 To run tests, type in console `npm test`. This will run all tests under `./test` folder. If you want to run specific file, try `npm run test:main`. Change filename in `package.json`.
 
+### Simple Auth
+
+Simple Auth module was added to this project, just as showcase.
+The module is:
+* Migration with user table
+* Auth controller - to handle signup and signin
+* userRepo - repository to handle logic
+* userEntity - db entity to work with database
 
 ### Authors
 
