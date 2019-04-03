@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    ports:
+      - ${DB_PORT}:5432
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./db_data/data:/var/lib/postgresql/data # add additional subdirectory, so docker build can work correctly
+
+  app:
+    build: .
+    restart: always
+    ports: 
+      - 36222:3000
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=${DB_NAME}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+    depends_on: 
+      - db

@@ -1,0 +1,39 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "Documentation for Your app.",
+      "version": "1.0.0",
+      "title": "Your app"
+    },
+    "host": "localhost:3000",
+    "basePath": "/v1",
+    "schemes": [
+      "https",
+      "http"
+    ],
+    "paths": {
+      "/auth": {
+        "post": {
+          "tags": [
+            "signup"
+          ],
+          "summary": "Create new user",
+          "description": "",
+          "operationId": "addPet",
+          "consumes": [
+            "application/json",
+            "application/xml"
+          ],
+          "produces": [
+            "application/xml",
+            "application/json"
+          ],
+          "responses": {
+            "405": {
+              "description": "Invalid input"
+            }
+          }
+        }
+      }
+    }
+  }

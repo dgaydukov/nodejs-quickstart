@@ -1,0 +1,6 @@
+DB_HOST=localhost
+DB_PORT=44111
+DB_USERNAME=dbuser
+DB_PASSWORD=password
+DB_NAME=dbname
+APP_PORT=25222]
