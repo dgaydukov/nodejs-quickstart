@@ -64,7 +64,10 @@ app.use(async (ctx: Koa.Context, next: () => Promise<any>) => {
     });
     if (runCheck) {
         const repo = new UserRepo();
-        await repo.checkAuth({ userId: ctx.req.headers.userid, authToken: ctx.req.headers.authtoken });
+        await repo.checkAuth({ 
+            userId: ctx.req.headers.userid as string, 
+            authToken: ctx.req.headers.authtoken as string 
+        });
     }
     await next();
 });
