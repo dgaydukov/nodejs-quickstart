@@ -17,7 +17,7 @@ services:
     build: .
     restart: always
     ports: 
-      - 36222:3000
+      - ${EXTERNAL_APP_PORT}:${APP_PORT}
     environment:
       - DB_HOST=db
       - DB_PORT=5432
