@@ -81,9 +81,13 @@ If you want to rollaback 5 migrations, then just type 5 times rollaback command 
 
 ### Project Structure
 ```
-public
-src
-test
+public # directory with public access, works as static server
+src # directory with all source code
+    app # all app source code
+    email-templates # *.pug files with email templates
+    entity # database entities
+    migration # list of migrations
+test # tests that run on commit, push, deploy
 ```
 
 
