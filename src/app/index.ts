@@ -24,5 +24,5 @@ app.use(RouterMiddleware);
 databaseConnection.then(async (connection) => {
     await connection.runMigrations();
     await app.listen(process.env.APP_PORT);
-    console.log('nodejs-quickstart is running...');
+    console.log(`nodejs-quickstart is running on port: ${process.env.APP_PORT}`);
 }).catch(console.log);
