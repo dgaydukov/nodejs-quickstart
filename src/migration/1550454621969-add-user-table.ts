@@ -18,7 +18,7 @@ export class addUserTable1550454621969 implements MigrationInterface {
                     type: 'varchar',
                 },
                 {
-                    name: 'password_hash',
+                    name: 'password',
                     type: 'varchar',
                 },
                 {
@@ -30,6 +30,11 @@ export class addUserTable1550454621969 implements MigrationInterface {
                     type: 'varchar',
                 },
                 {
+                    name: 'confirmation_code',
+                    type: 'varchar',
+                    isNullable: true,
+                },
+                {
                     name: 'role',
                     type: 'int',
                     default: 0,
@@ -39,17 +44,12 @@ export class addUserTable1550454621969 implements MigrationInterface {
                     type: 'int',
                     default: 0,
                 },
-                {
-                    name: 'confirmation_code',
-                    type: 'varchar',
-                    isNullable: true,
-                },
             ]
         }));
 
         await queryRunner.createIndex('user', new TableIndex({
             name: 'idx_user_search',
-            columnNames: ['email', 'password_hash', 'role']
+            columnNames: ['email', 'password', 'role']
         }));
 
         await queryRunner.createIndex('user', new TableIndex({

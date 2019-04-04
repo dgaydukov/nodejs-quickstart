@@ -11,7 +11,7 @@ export default class User {
     email: string;
 
     @Column()
-    password_hash: string;
+    password: string;
 
     @Column()
     firstname: string;
@@ -19,12 +19,12 @@ export default class User {
     @Column()
     lastname: string;
 
+    @Column({nullable: true})
+    confirmation_code: string;
+
     @Column({default: 0})
     role: number;
 
     @Column({default: 0})
     status: number;
-
-    @Column({nullable: true})
-    confirmation_code: string;
 }

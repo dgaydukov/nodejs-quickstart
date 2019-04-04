@@ -11,8 +11,8 @@ export default class Session {
     user_id: string;
 
     @Column()
-    timestamp: string;
+    key: string;
 
     @Column()
-    key: string;
+    timestamp: string;
 }

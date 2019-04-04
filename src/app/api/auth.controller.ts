@@ -18,7 +18,7 @@ router.post('/signin', async (ctx: Koa.Context) => {
   ctx.body = await repo.signIn(ctx.request.body.username, ctx.request.body.password);
 });
 
-router.get('/verify/:token', async (ctx: Koa.Context) => {
+router.post('/verify/:token', async (ctx: Koa.Context) => {
   const repo = new UserRepo();
   ctx.body = await repo.verify(ctx.params.token);
 });
