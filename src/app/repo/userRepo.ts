@@ -18,7 +18,7 @@ export default class UserRepo {
     }
     
     async signIn(username: string, password: string): Promise<IAuth>{
-        const user = await this.repo.findOne({email: username, password_hash: this.getPwdHash(password)});
+        const user = await this.repo.findOne({email: username, password: this.hashPassword(password)});
         if(!user || user.status !== UserStatus.Verified){
             throw new Error('User not found or inactive');
         }
@@ -40,7 +40,7 @@ export default class UserRepo {
         if(!validateEmail(load.email)){
             throw new Error(`Incorrect email address`);
         }
-        load.password_hash = this.getPwdHash(load.password);
+        load.password_hash = this.hashPassword(load.password);
         load.status = UserStatus.Registered;
         load.confirmation_code = dblSha(uuidv4() + process.env.SALT);
         this.sendConfirmationEmail(load.email, load.confirmation_code, baseurl);
@@ -51,10 +51,10 @@ export default class UserRepo {
 
     private async sendConfirmationEmail(email: string, code: string, baseurl: string){
         const link = `${baseurl}/v1/auth/verify/${encodeURIComponent(code)}`;
-        sendEmail(process.env.EMAIL_FROM, email, 'Confirm signup', `Click the link <a href='${link}'>${link}</a> to confirm the signup`);
+        sendEmail(process.env.EMAIL_FROM, email, {link: `Click the link <a href='${link}'>${link}</a> to confirm the signup`});
     }
 
-    private getPwdHash(password: string){
+    private hashPassword(password: string){
         return dblSha(password + process.env.SALT);
     }
     
