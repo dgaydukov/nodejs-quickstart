@@ -12,8 +12,9 @@ import AuthRepo from './repo/authRepo';
 
 const app = new Koa();
 const router = new Router({
-    prefix: '/v1'
+    prefix: '/v1.0'
 });
+
 /**
  * by default koa-static serve directory content to root url /, so we use
  * koa-mount to mount this static to desired url, in our case /public
