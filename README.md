@@ -81,6 +81,9 @@ If you want to rollaback 5 migrations, then just type 5 times rollaback command 
 
 ### Project Structure
 ```
+public
+src
+test
 ```
 
 
