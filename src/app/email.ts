@@ -13,22 +13,26 @@ const transport = {
 
 const email = new Email({
   message: {
-    from: process.env.EMAIL_FROM,
+    from: process.env.SENDER_EMAIL,
   },
   send: true,
   transport,
 });
 
-export const sendEmail = async (type: string, to: string, params: Record<string, string>) => {
+/**
+ * 
+ * @param templateName - name of template under email-templates folder
+ * @param to - recipient of the email
+ * @param locals - object of params that goes to templates, like name, website, etc
+ */
+export const sendEmail = async (templateName: string, to: string, locals: Record<string, string>) => {
   email
     .send({
-      template: resolve(__dirname, `../../email-templates/${type}`),
+      template: resolve(__dirname, `../../email-templates/${templateName}`),
       message: {
         to,
       },
-      locals: {
-        ...params,
-      },
+      locals,
     })
     .then(console.log)
     .catch(console.log);
