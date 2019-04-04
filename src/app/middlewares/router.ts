@@ -8,11 +8,11 @@ import authRouter from '../api/auth.controller';
 import { API_VERSION } from '../env';
 
 const router = new Router({
-    prefix: API_VERSION
+    prefix: `/${API_VERSION}`
 });
 
 router.get('/', async (ctx: Koa.Context) => {
-    ctx.body = 'Node.js Quickstart v1';
+    ctx.body = `Node.js Quickstart App, version: ${API_VERSION}`;
 });
 
 router.use(authRouter.routes(), authRouter.allowedMethods());

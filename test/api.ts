@@ -7,7 +7,7 @@ import rp = require('request-promise');
 
 describe('API integration testing', ()=>{
 
-    const API_URL = 'http://localhost:41222/v1.0/';
+    const API_URL = 'http://localhost:41222/1.0/';
 
     describe('Auth test', ()=>{
         const username = `user-${Math.round(Math.random()*10**9)}@gmail.com`;
