@@ -7,7 +7,7 @@ import rp = require('request-promise');
 import {IAuth, UserStatus} from '../interfaces';
 import {sendEmail} from '../email';
 
-export default class UserRepo {
+export default class AuthRepo {
 
     private repo: Repository<User>;
     private sessionRepo: Repository<Session>;

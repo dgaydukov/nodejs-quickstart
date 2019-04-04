@@ -8,7 +8,7 @@ import * as Mount from 'koa-mount';
 import * as HttpStatus from 'http-status-codes';
 import authRouter from './api/auth.controller';
 import databaseConnection from './db';
-import UserRepo from './repo/userRepo';
+import AuthRepo from './repo/authRepo';
 
 const app = new Koa();
 const router = new Router({
@@ -63,10 +63,10 @@ app.use(async (ctx: Koa.Context, next: () => Promise<any>) => {
         }
     });
     if (runCheck) {
-        const repo = new UserRepo();
+        const repo = new AuthRepo();
         await repo.checkAuth({ 
-            userId: ctx.req.headers.userid as string, 
-            authToken: ctx.req.headers.authtoken as string 
+            userId: ctx.req.headers.userid, 
+            authToken: ctx.req.headers.authtoken 
         });
     }
     await next();
