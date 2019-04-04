@@ -19,10 +19,6 @@ router.get('/', async (ctx: Koa.Context) => {
 });
 router.use(authRouter.routes(), authRouter.allowedMethods());
 
-/**
- * by default koa-static serve directory content to root url /, so we use
- * koa-mount to mount this static to desired url, in our case /public
- */
 app.use(StaticServerMiddleware);
 app.use(bodyParser());
 app.use(errorMiddleware);
