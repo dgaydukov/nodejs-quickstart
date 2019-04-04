@@ -1,0 +1,12 @@
+swagger: "2.0"
+info:
+  description: "Documentation for STO platform."
+  version: "1.0.0"
+  title: "Issuer platform"
+basePath: "/v1"
+schemes:
+- "https"
+- "http"
+paths:
+
+
