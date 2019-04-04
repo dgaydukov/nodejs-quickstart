@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 const Email = require('email-templates');
-import {SMTP_HOST,
+import {
+  SMTP_HOST,
   SMTP_PORT,
   SMTP_USE_SSL,
   SMTP_USERNAME,

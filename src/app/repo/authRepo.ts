@@ -6,6 +6,7 @@ import uuidv4 = require('uuid/v4');
 import rp = require('request-promise');
 import {IAuth, UserStatus} from '../interfaces';
 import {sendEmail} from '../email';
+import {SALT, USER_SESSION_EXPIRE_TIME} from '../env';
 
 export default class AuthRepo {
 
@@ -27,11 +28,10 @@ export default class AuthRepo {
             session = await this.sessionRepo.create({user_id: user.id});
         }
         session.timestamp = Date.now().toString();
-        session.key = dblSha(session.user_id + uuidv4() + process.env.SALT);
+        session.key = dblSha(session.user_id + uuidv4() + SALT);
         await this.sessionRepo.save(session);
         return {userId: user.id, authToken: session.key};
-    }
-    
+    }    
     async signUp(load, baseurl: string): Promise<string>{
         // send email, check the code and then register user
         if(load.password !== load.password_repeat){
@@ -42,7 +42,7 @@ export default class AuthRepo {
         }
         load.password_hash = this.hashPassword(load.password);
         load.status = UserStatus.Registered;
-        load.confirmation_code = dblSha(uuidv4() + process.env.SALT);
+        load.confirmation_code = dblSha(uuidv4() + SALT);
         this.sendConfirmationEmail(load.email, load.confirmation_code, baseurl);
         const item = await this.repo.create(load);
         const user = await this.repo.save(item);
@@ -51,11 +51,11 @@ export default class AuthRepo {
 
     private async sendConfirmationEmail(email: string, code: string, baseurl: string){
         const link = `${baseurl}/v1/auth/verify/${encodeURIComponent(code)}`;
-        sendEmail(process.env.EMAIL_FROM, email, {link: `Click the link <a href='${link}'>${link}</a> to confirm the signup`});
+        sendEmail('signup', email, {link: `Click the link <a href='${link}'>${link}</a> to confirm the signup`});
     }
 
     private hashPassword(password: string){
-        return dblSha(password + process.env.SALT);
+        return dblSha(password + SALT);
     }
     
 
@@ -71,7 +71,7 @@ export default class AuthRepo {
             throw new Error(`Session key doesn't correspond to user`);
         }
         const timePassed = Date.now() - Number(session.timestamp);
-        if(timePassed > Number(process.env.USER_SESSION_LIMIT_IN_DAYS) * 86400 * 10**3){
+        if(timePassed > Number(USER_SESSION_EXPIRE_TIME) * 86400 * 10**3){
             throw new Error(`Session time has expired`);
         }
         return true;
