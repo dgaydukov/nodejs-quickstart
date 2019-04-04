@@ -1,19 +1,26 @@
 import { resolve } from 'path';
 const Email = require('email-templates');
+import {SMTP_HOST,
+  SMTP_PORT,
+  SMTP_USE_SSL,
+  SMTP_USERNAME,
+  SMTP_PASSWORD,
+  SENDER_EMAIL,
+} from './env';
 
 const transport = {
-  host: process.env.SMTP_HOST,
-  port: process.env.SMTP_PORT,
-  secure: process.env.SMTP_IS_SSL,
+  host: SMTP_HOST,
+  port: SMTP_PORT,
+  secure: SMTP_USE_SSL,
   auth: {
-    user: process.env.SMTP_USERNAME,
-    pass: process.env.SMTP_PASSWORD,
+    user: SMTP_USERNAME,
+    pass: SMTP_PASSWORD,
   }
 };
 
 const email = new Email({
   message: {
-    from: process.env.SENDER_EMAIL,
+    from: SENDER_EMAIL,
   },
   send: true,
   transport,
