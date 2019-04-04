@@ -1,3 +1,7 @@
+/**
+ * Function to send email through SMTP
+ */
+
 import { resolve } from 'path';
 const Email = require('email-templates');
 import {

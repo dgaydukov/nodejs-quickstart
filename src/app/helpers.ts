@@ -1,3 +1,7 @@
+/**
+ * Different small helper functions used across the project
+ */
+
 const crypto = require('crypto');
 
 /**
