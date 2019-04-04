@@ -1,7 +1,7 @@
 import * as Koa from 'koa';
 import AuthRepo from '../repo/authRepo';
 
-export const authCheckMiddleware = async (ctx: Koa.Context, next: () => Promise<any>) => {
+export const AuthCheckMiddleware = async (ctx: Koa.Context, next: () => Promise<any>) => {
     let runCheck = true;
     const urlsWithoutAuth = ['/v1/auth'];
     urlsWithoutAuth.map(k => {

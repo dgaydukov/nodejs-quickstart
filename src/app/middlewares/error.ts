@@ -3,7 +3,7 @@ import * as HttpStatus from 'http-status-codes';
 
 
 
-export const errorMiddleware = async (ctx: Koa.Context, next: () => Promise<any>) => {
+export const ErrorMiddleware = async (ctx: Koa.Context, next: () => Promise<any>) => {
     try {
         await next();
     } catch (error) {
