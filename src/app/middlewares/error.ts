@@ -1,6 +1,9 @@
+/**
+ * Error handling middleware
+ */
+
 import * as Koa from 'koa';
 import * as HttpStatus from 'http-status-codes';
-
 
 
 export const ErrorMiddleware = async (ctx: Koa.Context, next: () => Promise<any>) => {

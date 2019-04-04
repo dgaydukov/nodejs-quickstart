@@ -1,4 +1,4 @@
-import {Entity, Column, Index, PrimaryGeneratedColumn} from "typeorm";
+import { Entity, Column, Index, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export default class Session {

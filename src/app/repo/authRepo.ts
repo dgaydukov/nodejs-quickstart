@@ -1,12 +1,12 @@
 import { getRepository, Repository } from 'typeorm';
 import User from '../../entity/user';
 import Session from '../../entity/session';
-import {dblSha, validateEmail} from '../helpers';
+import { dblSha, validateEmail } from '../helpers';
 import uuidv4 = require('uuid/v4');
 import rp = require('request-promise');
-import {IAuth, UserStatus} from '../interfaces';
-import {sendEmail} from '../email';
-import {SALT, USER_SESSION_EXPIRE_TIME} from '../env';
+import { IAuth, UserStatus } from '../interfaces';
+import { sendEmail } from '../email';
+import { SALT, USER_SESSION_EXPIRE_TIME } from '../env';
 
 export default class AuthRepo {
 

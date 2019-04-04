@@ -1,3 +1,7 @@
+/**
+ * Middleware to check auth on API requests
+ */
+
 import * as Koa from 'koa';
 import AuthRepo from '../repo/authRepo';
 

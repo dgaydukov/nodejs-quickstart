@@ -1,3 +1,6 @@
+/**
+ * Swagger middleware
+ */
 
 const koaSwagger = require('koa2-swagger-ui');
 
