@@ -7,12 +7,10 @@ import rp = require('request-promise');
 
 describe('API integration testing', ()=>{
 
-    const API_URL = 'http://localhost:3000/v1/';
-    let authData;
+    const API_URL = 'http://localhost:41222/v1.0/';
 
     describe('Auth test', ()=>{
-        const baseUrl = API_URL + 'auth/';
-        const username = `user-${Math.random()*10**6}@gmail.com`;
+        const username = `user-${Math.round(Math.random()*10**9)}@gmail.com`;
         const password = 'password';
 
         it('should signup new user', async()=>{
@@ -24,7 +22,7 @@ describe('API integration testing', ()=>{
             }
             const options = {
                 method: 'POST',
-                uri: baseUrl + 'signup',
+                uri: `${API_URL}/auth/signup`,
                 body,
                 json: true,
             };
@@ -35,14 +33,24 @@ describe('API integration testing', ()=>{
         it('should signin existing user', async()=>{
             const options = {
                 method: 'POST',
-                uri: baseUrl + 'signin',
+                uri: `${API_URL}/auth/signin`,
                 body: {username, password},
                 json: true,
             };
             const result = await rp(options);
-            authData = result;
             assert.equal(result.userId.length, 36, 'lenght of returned userId should be 36');
             assert.equal(result.authToken.length, 44, 'lenght of returned authToken should be 44');
+        });
+    
+        it('should verify registered user', async()=>{
+            const token = '123';
+            const options = {
+                method: 'POST',
+                uri: `${API_URL}/auth/verify/${token}`,
+                json: true,
+            };
+            const result = await rp(options);
+            assert.equal(result.status, 'verified', 'Status should be equal to verified');
         });
     });
 });
