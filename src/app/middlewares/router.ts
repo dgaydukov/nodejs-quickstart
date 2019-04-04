@@ -3,9 +3,10 @@
 import * as Koa from 'koa';
 import * as Router from 'koa-router';
 import authRouter from '../api/auth.controller';
+import { API_VERSION } from '../env';
 
 const router = new Router({
-    prefix: '/v1.0'
+    prefix: API_VERSION
 });
 
 router.get('/', async (ctx: Koa.Context) => {

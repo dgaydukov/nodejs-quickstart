@@ -12,6 +12,6 @@ export const SMTP_USERNAME = process.env.SMTP_USERNAME;
 export const SMTP_PASSWORD = process.env.SMTP_PASSWORD;
 export const SENDER_EMAIL = process.env.SENDER_EMAIL;
 export const SALT = process.env.SALT;
-
 // expire time in days
 export const USER_SESSION_EXPIRE_TIME = process.env.USER_SESSION_EXPIRE_TIME;
+export const API_VERSION = process.env.API_VERSION;

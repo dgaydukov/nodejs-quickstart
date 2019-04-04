@@ -6,7 +6,7 @@
       "title": "Your app"
     },
     "host": "localhost:3000",
-    "basePath": "/v1",
+    "basePath": "/v1.0",
     "schemes": [
       "https",
       "http"
