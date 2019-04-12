@@ -13,9 +13,11 @@ import { AuthCheckMiddleware } from './middlewares/authcheck';
 import { StaticServerMiddleware } from './middlewares/static-server';
 import { RouterMiddleware } from './middlewares/router';
 import { APP_PORT } from './env';
+const cors = require('@koa/cors');
 
 const app = new Koa();
 
+app.use(cors());
 app.use(bodyParser());
 app.use(StaticServerMiddleware);
 app.use(ErrorMiddleware);
