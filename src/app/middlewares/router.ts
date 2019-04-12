@@ -12,7 +12,7 @@ const router = new Router({
 });
 
 router.get('/', async (ctx: Koa.Context) => {
-    ctx.body = `Node.js Quickstart App, version: ${API_VERSION}`;
+    ctx.body = `Node.js Quickstart App, API version: ${API_VERSION}`;
 });
 
 router.use(authRouter.routes(), authRouter.allowedMethods());

@@ -19,6 +19,8 @@ services:
     ports: 
       - ${EXTERNAL_APP_PORT}:${APP_PORT}
     environment:
+      - APP_PORT:${APP_PORT}
+      - API_VERSION:${API_VERSION}
       - DB_HOST=db
       - DB_PORT=5432
       - DB_NAME=${DB_NAME}
