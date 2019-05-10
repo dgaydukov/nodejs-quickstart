@@ -1,5 +1,10 @@
 db_data
 node_modules
 dist
+.git
 
 .env
+.env.tpl
+.gitignore
+docker-compose.yml
+README.md
