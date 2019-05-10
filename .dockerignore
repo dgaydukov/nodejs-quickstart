@@ -1,7 +1,7 @@
+.git
 db_data
 node_modules
 dist
-.git
 
 .env
 .env.tpl
